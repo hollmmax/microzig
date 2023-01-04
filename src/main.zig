@@ -181,7 +181,7 @@ pub fn addEmbeddedExecutable(
         .app_packages = std.ArrayList(Pkg).init(builder.allocator),
     };
 
-    exe.inner.use_stage1 = true;
+    exe.inner.strip = false; // we always want debug symbols, stripping brings us no benefit on embedded
 
     // might not be true for all machines (Pi Pico), but
     // for the HAL it's true (it doesn't know the concept of threading)
